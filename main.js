@@ -1,3 +1,6 @@
+const controlsHideTime = 2000;
+
+const playerContainer = document.querySelector('.player-container');
 const player = document.querySelector('.video-player');
 const play = document.querySelector('.play');
 const stop = document.querySelector('.stop');
@@ -8,12 +11,13 @@ const slider = document.querySelector('.slider');
 const cursor = document.querySelector('.cursor');
 const controls = document.querySelector('.media-controls');
 const timeLeft = document.querySelector('.duration');
+let hideControlsTimeout = null;
 
 
 
 //FUNCTIONS
 
-function isPlaying(){
+function togglePlaying(){
     if (player.paused){
         player.play();
         play.innerHTML = '<img src="img/pause.png">';
@@ -60,8 +64,8 @@ function formatTime(time)
 
 // PLAY
 
-play.addEventListener('click', isPlaying);
-player.addEventListener('click', isPlaying);
+play.addEventListener('click', togglePlaying);
+player.addEventListener('click', togglePlaying);
 
 
 // STOP
@@ -75,48 +79,61 @@ stop.addEventListener('click', function () {
 
 document.body.onkeyup = function(e){
     if(e.keyCode === 32){
-        isPlaying();
+        togglePlaying();
     }
 };
 
 
-// MUTE
-mute.addEventListener('click', toggleMute);
 
 // VOLUME
-volume.addEventListener('change', (ev) => setVolume(ev.target.value));
+volume.addEventListener('input', (ev) => setVolume(ev.target.value));
 
 
 // FULL SCREEN
-
 fullScreen.addEventListener('click', function () {
-    if (player.requestFullscreen) {
-        player.requestFullscreen();
-    } else if (player.mozRequestFullScreen) {
-        player.mozRequestFullScreen();
-    } else if (player.webkitRequestFullscreen) {
-        player.webkitRequestFullscreen();
-    }
+    console.log("document.fullscreenElement = ", document.fullscreenElement, document.webkitFullscreenElement, document.mozFullscreenElement);
+    if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullscreenElement)
+    {
+        console.log("Exiting fullscreen");
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozExitFullScreen) {
+            document.mozExitFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
 
+        playerContainer.classList.remove('fullscreen');
+    } else {
+        console.log("Fullscreening");
+        if (player.requestFullscreen) {
+            player.requestFullscreen();
+        } else if (player.mozRequestFullScreen) {
+            player.mozRequestFullScreen();
+        } else if (player.webkitRequestFullscreen) {
+            player.webkitRequestFullscreen();
+        }
+
+        playerContainer.classList.add('fullscreen');
+    }
 });
 
 // SLIDER
 
 slider.addEventListener('click', function (ev) {
     const coeff = (ev.clientX - slider.getBoundingClientRect().x) / slider.getBoundingClientRect().width;
+    console.log(coeff);
     player.currentTime = coeff * player.duration;
 });
 
 
 
 
-
-setInterval(function () {
-
+player.addEventListener('timeupdate', function () {
     // Update timer track slider
-    const trackWidth = slider.getBoundingClientRect().width - cursor.getBoundingClientRect().width;
-    const x = player.currentTime / player.duration;
-    cursor.style.marginLeft = (x  * trackWidth) + 'px';
+    const trackWidth = slider.getBoundingClientRect().width;
+    const coeff = player.currentTime / player.duration;
+    cursor.style.width = (coeff  * trackWidth) + 'px';
     timeLeft.innerHTML =  formatTime(player.currentTime % 60) + '/' + formatTime(player.duration);
 
 
@@ -126,6 +143,36 @@ setInterval(function () {
         player.currentTime = 0;
         play.innerHTML = '<img src="img/play.png">';
     }
-}, 100);
+});
 
+// CONTROLS
+function hideControls() {
+    if (player.paused) return;
+    console.log("hide controls");
+    // TODO: add class to hide controls
+}
+
+function showControls() {
+    console.log("show controls");
+    // TODO: remove class to hide controls
+}
+
+player.addEventListener('play', function() {
+    hideControlsTimeout = setTimeout(function() {
+        hideControls();
+    }, controlsHideTime);
+});
+
+player.addEventListener('mousemove', function() {
+    clearTimeout(hideControlsTimeout);
+    showControls();
+    hideControlsTimeout = setTimeout(function() {
+        hideControls();
+    }, controlsHideTime);
+});
+
+player.addEventListener('pause', function() {
+    clearTimeout(hideControlsTimeout);
+    showControls();
+});
 
