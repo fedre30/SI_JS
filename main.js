@@ -7,6 +7,7 @@ const fullScreen = document.querySelector('.fullScreen-button');
 const slider = document.querySelector('.slider');
 const cursor = document.querySelector('.cursor');
 const controls = document.querySelector('.media-controls');
+const timeLeft = document.querySelector('.duration');
 
 
 
@@ -21,6 +22,8 @@ function isPlaying(){
         play.innerHTML = '<img src="img/play.png">';
 
     }
+
+
 }
 
 
@@ -33,6 +36,25 @@ function toggleMute(){
 
 function setVolume(value) {
     player.volume = Math.max(Math.min(value, 1), 0);
+}
+
+function formatTime(time)
+{
+    if (time < 1) return '00:00';
+
+    const hours = Math.floor(time / 3600);
+    const minutes = Math.floor((time / 60) % 60); // modulo 60 is useful if the time is longer than one hour
+    const seconds = Math.floor(time % 60);
+
+    let formattedTime = "";
+
+    if (hours !== 0) {
+        formattedTime += hours + ':';
+    }
+
+    formattedTime += minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+
+    return formattedTime;
 }
 
 
@@ -93,8 +115,10 @@ setInterval(function () {
 
     // Update timer track slider
     const trackWidth = slider.getBoundingClientRect().width - cursor.getBoundingClientRect().width;
-    const coeff = player.currentTime / player.duration;
-    cursor.style.marginLeft = (coeff * trackWidth) + 'px';
+    const x = player.currentTime / player.duration;
+    cursor.style.marginLeft = (x  * trackWidth) + 'px';
+    timeLeft.innerHTML =  formatTime(player.currentTime % 60) + '/' + formatTime(player.duration);
+
 
     // Check if video ended
     if(player.currentTime === player.duration){
