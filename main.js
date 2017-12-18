@@ -3,9 +3,10 @@ const play = document.querySelector('.play');
 const stop = document.querySelector('.stop');
 const mute = document.querySelector('.mute');
 const volume = document.querySelector('.volume');
-const fullScreen = document.querySelector('.fullScreen');
+const fullScreen = document.querySelector('.fullScreen-button');
 const slider = document.querySelector('.slider');
 const cursor = document.querySelector('.cursor');
+const controls = document.querySelector('.media-controls');
 
 
 
@@ -74,6 +75,7 @@ fullScreen.addEventListener('click', function () {
     } else if (player.webkitRequestFullscreen) {
         player.webkitRequestFullscreen();
     }
+
 });
 
 // SLIDER

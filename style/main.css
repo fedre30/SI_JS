@@ -1,7 +1,7 @@
 
 .player-container{
-    width: 100%;
-    height: 800px;
+    width: 100vw;
+    height: 90vh;
 }
 
 .video-player{
@@ -14,6 +14,13 @@
 
 .media-controls{
    width: 100%;
+    z-index: 2147483647;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+
 }
 
 img{
@@ -48,3 +55,11 @@ img{
     background-color: #D1D1D1;
     transition: margin-left .1s linear;
 }
+
+
+video::-webkit-media-controls {
+    display:none !important;
+}
+
+
+
