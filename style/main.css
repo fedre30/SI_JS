@@ -63,8 +63,45 @@ img{
     margin-top: 5px;
 }
 
-.volumeSlider .volume {
+input[type=range]{
+    -webkit-appearance: none;
+    
+}
 
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    margin-top: -4px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 15px;
+    width: 16px;
+    border-radius: 3px;
+    background: #528D93;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
 }
 
 .duration{
@@ -75,7 +112,7 @@ img{
 
 
 .fullScreen-button{
-    margin: 5px 30px 0 0;
+    margin: 7px 20px 0 0;
 }
 
 .buffer{
@@ -121,4 +158,6 @@ video::-webkit-media-controls {
     animation: fadeOut .5s ease forwards;
 
 }
+
+
 

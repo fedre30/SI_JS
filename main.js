@@ -14,6 +14,7 @@ const controls = document.querySelector('.media-controls');
 const timeLeft = document.querySelector('.duration');
 let controlsCanHide = true;
 let hideControlsTimeout = null;
+const volumeOverlay = document.querySelector('.volumeOverlay');
 
 
 //FUNCTIONS
@@ -43,6 +44,7 @@ function setMuted(isMuted){
 function setVolume(value) {
     setMuted(false);
     player.volume = Math.max(Math.min(value, 1), 0);
+
 }
 
 function formatTime(time)
