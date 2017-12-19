@@ -13,20 +13,25 @@
         <source src="video/big_buck_bunny.mp4" type="video/mp4">
     </video>
 
-    <div class="media-controls container">
+    <div class="media-controls">
+        <div class="buffer">
+            <div class=" slider"><div class="cursor"></div></div>
+        </div>
 
-        <div class="buttons row">
-            <div class="play two columns"><img src="img/play.png" alt="play"></div>
-            <div class="stop two columns"><img src="img/stop.png" alt="stop"></div>
-            <div class="mute two columns"><img src="img/mute.png" alt="mute"></div>
-            <div class="volumeSlider four columns"><input class="volume" type="range" min="0" max="1" step="0.01" value="0.5"></div>
-            <div class="fullScreen-button two columns"><img src="img/full_screen.png" alt="Full Screen"></div>
-
-            <div class="buffer row">
-                <div class="ten columns slider"><div class="cursor"></div></div>
-                <div class="two columns duration">00:00 / 00:00</div>
+        <div class="buttons">
+            <div class="buttonsLeft">
+                <div class="play"><img src="img/play.png" alt="play"></div>
+                <div class="stop"><img src="img/stop.png" alt="stop"></div>
+                <div class="volumeSlider">
+                    <img class="volume-img" src="img/volume.png" alt="volume">
+                    <input class="volume" type="range" min="0" max="1" step="0.01" value="0.5">
+                </div>
+                <div class=" duration">00:00 / 00:00</div>
             </div>
 
+            <div class="buttonsRight">
+                <div class="fullScreen-button"><img src="img/full_screen.png" alt="Full Screen"></div>
+             </div>
         </div>
     </div>
 </div>
