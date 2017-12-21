@@ -324,7 +324,7 @@ pre > code {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 th,
 td {
-  padding: 12px 15px;
+  padding: 10rem 20rem;
   text-align: left;
   border-bottom: 1px solid #E1E1E1; }
 th:first-child,
@@ -416,3 +416,6 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+
+

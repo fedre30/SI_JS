@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const multer = require('multer');
+const thumbsupply = require('thumbsupply');
 
 const app = express();
 const upload = multer({
@@ -50,4 +51,6 @@ app.use('/uploads', express.static('uploads', {
         res.set('Content-Type', 'video/mp4');
     }
 }));
+
+
 app.listen(3000);

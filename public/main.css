@@ -17,9 +17,25 @@ a {
   color: #fff;
 }
 
+.menuBodySlideOut {
+  animation: slide-in-body .8s reverse both;
+}
+
+.menuBodySlideIn {
+  animation: slide-in-body .8s both;
+}
+
+.burgerMenuSlideOut {
+  animation: slide-in-right .8s reverse both;
+}
+
+.burgerMenuSlideIn {
+  animation: slide-in-right .8s both;
+}
+
 .changeSize {
   width: 85%;
-  animation: slide-in-body 0.5s ease;
+  /*animation: slide-in-body 0.5s ease;*/
 }
 
 .burger {
@@ -90,17 +106,18 @@ a {
   position: fixed;
   top: 0%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20rem;
   background: rgba(33,33,33,0.8);
   width: 100%;
-  z-index: 3
+  z-index: 3;
   }
 
 .logo {
+  margin-top: 1rem;
   height: 5rem;
   width: 20rem;
-  margin-left: 15rem;
+  margin-left: 16.5rem;
 }
 
 .logo img {
@@ -110,14 +127,26 @@ a {
 .search {
   margin-right: 5rem;
   width: 100%;
-  grid-column: 2 / 4;
-  margin-top: 2rem;
+  grid-column: 3;
+  margin-top: 3rem;
+}
+
+#input {
+  padding: 1rem 8rem  1rem 1rem;
+  margin-left: -15rem;
+  border-radius: 20px;
 }
 
 .searchInput {
   width: 60%;
   margin-left: 30rem;
   margin-top: 1rem;
+}
+
+.found{
+  display: none;
+  color: white;
+  font-size: 2rem;
 }
 
 .sideMenuDisplay {
@@ -134,7 +163,7 @@ a {
 
 .closeBurger {
   display: block;
-  animation: slide-in-right 0.5s both;
+
 }
 
 .seConnecterPosition {
@@ -181,6 +210,11 @@ hr {
   background: #277e7f;
   margin-top: 10rem;
   margin-bottom: 8rem;
+}
+
+.hr-top {
+  display: none;
+  margin-top: 15rem;
 }
 
 .notreSelectionContainer {
@@ -313,6 +347,15 @@ input[type="checkbox"], input[type="radio"] {
 .containerVideo {
   width: 80%;
   margin: 0 auto;
+}
+
+.rechercheTitle {
+  display: none;
+  color: #f2f2f2;
+  font-size: 2.8rem;
+  margin-bottom: 4rem;
+  margin-top: 7rem;
+  font-weight: 800;
 }
 
 .videoTitle2 {
@@ -449,7 +492,7 @@ input[type="checkbox"], input[type="radio"] {
 
 .footerIcons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 300px;
   height: 25%;
   grid-row: 2;
@@ -463,7 +506,7 @@ input[type="checkbox"], input[type="radio"] {
 .footerIcon {
   position: relative;
   border-right: 3px solid #277e7f;
-  margin-top: 11rem;
+  margin-top: 6rem;
 }
 
 .footerIcon:nth-child(7) {
@@ -482,6 +525,7 @@ input[type="checkbox"], input[type="radio"] {
 .footerMessage {
   text-align: center;
   margin-top: 1rem;
+  font-size: 1.2rem;
 }
 
 .letterSpacing {
@@ -495,8 +539,15 @@ input[type="checkbox"], input[type="radio"] {
 .copyright{
   text-align: center;
   line-height: 1.5;
-  padding-bottom: 2rem;
-  margin-top: 2rem;
+  padding-bottom: 3rem;
+  margin-top: 4rem;
+}
+
+/* UPLOAD */
+
+uploadSection {
+  margin-top: 10rem;
+  width: 200px;
 }
 
 /*OVERLAY*/
@@ -576,6 +627,7 @@ input[type="checkbox"], input[type="radio"] {
  grid-column: 1 / 4;
  grid-row: 3 / 10;
  width: 100%;
+  position: relative;
  height: 300px;
 }
 
@@ -583,7 +635,24 @@ input[type="checkbox"], input[type="radio"] {
  grid-row: 4;
  grid-column: 5 / 8;
 }
+.imgContainer:hover > .playBTN {
+  height: 70px;
+  width: 70px;
+}
 
+.imgContainer:hover {
+  cursor: pointer;
+}
+
+
+.playBTN {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50px;
+  width: 50px;
+}
 .overlayStars {
   grid-row: 4;
   grid-column: 8 / 10;
@@ -647,6 +716,26 @@ input[type="checkbox"], input[type="radio"] {
 .overlayGenre {
  grid-column: 5 / 8;
  grid-row: 11;
+}
+
+.recherche {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4rem;
+  margin-top: 5rem;
+}
+
+.dieu {
+  font-size: 12.6rem;
+  display: none;
+  color: #277e7f;
+  grid-column: 5;
+  grid-row: 2;
+}
+
+#dieu {
+  grid-column: 5;
+  grid-row: 2;
 }
 
 /*OVERLAY*/
@@ -952,3 +1041,124 @@ video::-webkit-media-controls {
     display: none;
   }
 }
+
+
+/* UPLOAD */
+
+.uploadSection {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.uploadSection h2{
+  color: #f2f2f2;
+  font-size: 2.8rem;
+  margin-bottom: 4rem;
+  margin-top: 7rem;
+  font-weight: 800;
+}
+
+.forms {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 1fr;
+  margin-top: 10rem;
+}
+
+.position1 {
+  grid-column: 1;
+  margin: 0 auto;
+}
+
+.position2 {
+  grid-column: 2;
+  margin: 0 auto;
+
+}
+
+.position3 {
+  grid-column: 3;
+  margin: 0 auto;
+
+}
+
+.positionRow1 {
+  grid-row: 1;
+}
+
+.positionRow2 {
+  grid-row: 2;
+}
+
+.positionRow3 {
+  grid-row: 3;
+}
+
+.positionRow4 {
+  grid-row: 4;
+}
+
+.gridIngrid {
+  display: grid;
+}
+
+#test {
+  margin-top: 2.5rem;
+  padding: 1rem 5rem;
+}
+
+
+#test2 {
+  margin-top: 2.5rem;
+  padding: 3rem 5rem;
+}
+
+
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+
+
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  color: #212121;
+}
+
+.inputfile + label {
+  cursor: pointer;
+}
+
+.inputfile:focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.file-return:not(:empty) {
+  margin: 1em 0;
+}
+.js .file-return {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+.js .file-return:not(:empty):before {
+  content: "Selected file: ";
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+

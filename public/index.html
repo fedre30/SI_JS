@@ -19,7 +19,7 @@
       <div class="overlayGrid">
         <div class="retour">
           <h2 class="retourTitle">
-            <i class="fa fa-angle-left" aria-hidden="true"></i> Retour</h2>
+            <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Retour</h2>
         </div>
         <div class="overlayDescription">
           <h3>Description</h3>
@@ -28,6 +28,7 @@
           <h3>Commentaires</h3>
         </div>
         <div class="imgContainer">
+          <img class="playBTN" src="img/Btn_Play.png" alt="">
         </div>
         <div class="overlayMovieTitle">
         </div>
@@ -93,10 +94,10 @@
   <!-- OVERLAY -->
 
   <section class="sideMenuDisplay top-bar">
-    <a href="#Selection"><h2 class="menuTitle">Notre Sélection</h2></a>
+    <a href="#Selection"><h2 class="menuTitle">Notre sélection</h2></a>
     <a href="#genre"><h2 class="menuGenre">Genre</h2></a>
     <ul class="menuList">
-      <li class="menuListItems">#horror</li>
+      <li class="menuListItems">#horreur</li>
       <li class="menuListItems">#comédie</li>
       <li class="menuListItems">#thriller</li>
       <li class="menuListItems">#fantastique</li>
@@ -107,7 +108,7 @@
       <li class="menuListItems">#documentaire</li>
       <li class="menuListItems">#loisirs</li>
     </ul>
-    <a href="#allVideo"><h2 class="menuRecent">Nos Video</h2></a>
+    <a href="#allVideo"><h2 class="menuRecent">Nos Vidéos</h2></a>
     <a href="#recent"><h2 class="menuAffiche">À l'affiche</h2></a>
   </section>
   <header>
@@ -116,7 +117,10 @@
         <img src="logo.png" alt="">
       </div>
       <div class="search">
-        <input type="search" placeholder="Search" class="searchInput">
+        <form onSubmit="return false;">
+          <input class="input" id="input" type="text" placeholder="Rechercher un film">
+          <p class="dieu" id="dieu">Bonjour Maitre Hokage !</p>
+        </form>
       </div>
     </div>
     <span class="burger burgerPosition">
@@ -128,10 +132,17 @@
   </header>
 
   <div class="bodyWidth">
+    <hr class="hr-top">
+    <section class="containerVideo">
+      <h2 class="rechercheTitle">Résultats de la recherche</h2>
+      <p class="found"><span class="numberSearch"></span> Film(s) trouvé(s)</p>
+      <div class="recherche">
+      </div>
+    </section>
 
     <hr>
     <section class="notreSelectionContainer" id="Selection">
-      <h2 class="recentTitle">Notre Séléction</h2>
+      <h2 class="recentTitle">Notre Sélection</h2>
       <div class="notreSelection">
       </div>
     </section>
@@ -139,7 +150,7 @@
     <hr>
 
     <section class="genreContainer" id="genre">
-      <h2 class="genreTitle2">Tous Nos Genres</h2>
+      <h2 class="genreTitle2">Genres</h2>
       <div class="genre">
         <input type="checkbox" id="checkboxHorror checkboxDisplay">
         <label class="tags horror genreTitle" for="checkboxHorror" data-category="Horror / Thriller"> #horreur </label>
@@ -171,30 +182,50 @@
     </section>
     <hr>
     <section class="recentContainer" id="recent">
-      <h2 class="recentTitle">Nos Films Récents</h2>
+      <h2 class="recentTitle">Films récents</h2>
       <div class="recent">
       </div>
     </section>
 
     <section class="uploadSection">
-      <form action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
-        <input type="text" name="title" placeholder="Titre" />
-        <input type="text" name="author" placeholder="Auteur" />
-        <input type="text" name="description" placeholder="Description" />
-        <input type="number" name="year" min="1990" max="2017" value="2017" placeholder="Année" />
-        <select name="category">
-          <option value="Animation">Animation</option>
-          <option value="Aventure">Aventure</option>
-          <option value="Comedy">Comédie</option>
-          <option value="Documentary">Documentaire</option>
-          <option value="Children">Enfant</option>
-          <option value="Fantasy">Fantastique</option>
-          <option value="Horror / Thriller">Horror / Thriller</option>
-          <option value="Entertainment">Loisir</option>
-          <option value="Sport">Sport</option>
-        </select>
-        <input type="file" name="video" />
-        <input type="submit" />
+      <h2>Ajouter une vidéo</h2>
+      <form action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data" class="forms">
+        <div class="position1 positionRow2">
+          <input type="text" name="title" placeholder="Titre" id="test" />
+        </div>
+        <div class="position3 positionRow2">
+          <input type="text" name="author" placeholder="Auteur" id="test"/>
+        </div>
+        <div class="position1 positionRow3">
+          <input type="text" name="description" placeholder="Description" id="test2"/>
+        </div>
+
+        <div class="position3 positionRow3 gridIngrid">
+          <div class="position1 positionRow1">
+            <input type="number" name="year" min="1990" max="2017" value="2017" placeholder="Année" id="test" />
+          </div>
+          <div class="positionRow2 position1">
+            <select name="category" >
+              <option value="Animation">Animation</option>
+              <option value="Aventure">Aventure</option>
+              <option value="Comedy">Comédie</option>
+              <option value="Documentary">Documentaire</option>
+              <option value="Children">Enfant</option>
+              <option value="Fantasy">Fantastique</option>
+              <option value="Horror / Thriller">Horror / Thriller</option>
+              <option value="Entertainment">Loisir</option>
+              <option value="Sport">Sport</option>
+            </select>
+          </div>
+        </div>
+        <div class="position2 positionRow1">
+          <input type="file" name="video" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
+          <label class="labelFile" for="file">Choisir une vidéo</label>
+          <p class="file-return"></p>
+        </div>
+        <div class="position2 positionRow4">
+          <input class="submit" type="submit" />
+        </div>
       </form>
     </section>
 
@@ -233,19 +264,19 @@
           <p class="footerPhoneNum footerP">+33 6 19 28 37 46</p>
         </div>
         <div class="footerMessage">
-          <h3 class="footerAdress letterSpacing">Nous Trouver</h3>
+          <h3 class="footerAdress letterSpacing">Nous trouver</h3>
           <p class="footerLocation footerP">Montreuil</p>
         </div>
         <div class="footerMessage">
           <h3 class="footerNewsH3 letterSpacing">Newsletter</h3>
-          <p class="footerFindMore footerP">Découvre Nos Nouveauté</p>
+          <p class="footerFindMore footerP">Découvrez nos nouveautés</p>
         </div>
         <div class="footerMessage">
           <h3 class="letterSpacing">Discord</h3>
-          <p class="footerP">Rejoins-Nous !</p>
+          <p class="footerP">Rejoignez-Nous !</p>
         </div>
       </div>
-      <p class="copyright">Groupe 23 <br> CopyRight 2017</p>
+      <p class="copyright">Groupe 23 <br> ©CopyRight 2017</p>
     </footer>
 
     <!-- PLAYER -->
@@ -283,32 +314,6 @@
 
   </div>
 
-  <script type="text/javascript">
-    var burger = document.querySelector('.burger');
-    var closeBurger = document.querySelector('.closeBurger');
-    var nav = document.querySelector('.sideMenuDisplay');
-    var changeSize = document.querySelector('.changeSize');
-    var body = document.querySelector('.bodyWidth');
-    var burgerTop = document.querySelector('.burgerMenuBefore');
-    var burgerRotateTop = document.querySelector('.burgerRotateTop');
-    var burgerMid = document.querySelector('.burgerMid');
-    var burgerMidDisplay = document.querySelector('.burgerMidDisplay');
-    var burgerBot = document.querySelector('.burgerMenuAfter');
-    var burgerRotateBot = document.querySelector('.burgerRotateBot');
-    var burgerPosition = document.querySelector('.burgerPosition');
-
-    burger.addEventListener('click', function() {
-      nav.classList.toggle('closeBurger');
-      body.classList.toggle('changeSize');
-      burgerTop.classList.toggle('burgerRotateTop');
-      burgerMid.classList.toggle('burgerMidDisplay');
-      burgerBot.classList.toggle('burgerRotateBot');
-
-      nav.dataset.options = 'scrolltop: false;';
-
-    });
-
-  </script>
 
   <script src='data.js'></script>
   <script src='main.js'></script>
