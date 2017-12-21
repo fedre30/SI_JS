@@ -187,25 +187,21 @@
       </div>
     </section>
 
-    <section class="uploadSection">
+    <section class="uploadContainer">
       <h2>Ajouter une vidéo</h2>
       <form action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data" class="forms">
-        <div class="position1 positionRow2">
-          <input type="text" name="title" placeholder="Titre" id="test" />
-        </div>
-        <div class="position3 positionRow2">
-          <input type="text" name="author" placeholder="Auteur" id="test"/>
-        </div>
-        <div class="position1 positionRow3">
-          <input type="text" name="description" placeholder="Description" id="test2"/>
+        <div class="row">
+          <div class="eight columns">
+            <input type="text" name="title" placeholder="Titre" />
+          </div>
+          <div class="four columns">
+            <input type="text" name="author" placeholder="Auteur" />
+          </div>
         </div>
 
-        <div class="position3 positionRow3 gridIngrid">
-          <div class="position1 positionRow1">
-            <input type="number" name="year" min="1990" max="2017" value="2017" placeholder="Année" id="test" />
-          </div>
-          <div class="positionRow2 position1">
-            <select name="category" >
+        <div class="row">
+          <div class="eight columns">
+            <select name="category">
               <option value="Animation">Animation</option>
               <option value="Aventure">Aventure</option>
               <option value="Comedy">Comédie</option>
@@ -217,67 +213,72 @@
               <option value="Sport">Sport</option>
             </select>
           </div>
+          <div class="four columns">
+            <input type="number" name="year" min="1990" max="2017" value="2017" placeholder="Année" />
+          </div>
         </div>
-        <div class="position2 positionRow1">
-          <input type="file" name="video" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
-          <label class="labelFile" for="file">Choisir une vidéo</label>
-          <p class="file-return"></p>
-        </div>
-        <div class="position2 positionRow4">
-          <input class="submit" type="submit" />
-        </div>
+
+        <textarea type="text" name="description" placeholder="Description"></textarea>
+
+        <input type="file" name="video" id="file" class="inputfile" />
+        <label for="file">Choisir un fichier</label>
+
+        <input class="submit" type="submit" />
       </form>
     </section>
 
-
-    <footer class="footer">
-      <div class="footerGrid">
-        <div class="footerLogo">
-          <img class="footerLogoSize" src="logo.png" alt="">
-        </div>
-        <div class="footerIcons">
-          <i class="fa social fa-facebook" aria-hidden="true"></i>
-          <i class="fa social fa-twitter" aria-hidden="true"></i>
-          <i class="fa social fa-instagram" aria-hidden="true"></i>
-        </div>
-        <div class="footerIcon">
-          <img class="resizeFooterIcons" src="img/Footer/mail.png" alt="">
-        </div>
-        <div class="footerIcon">
-          <img class="resizeFooterIcons" src="img/Footer/phone.png" alt="">
-        </div>
-        <div class="footerIcon">
-          <img class="resizeFooterIcons" src="img/Footer/maps.png" alt="">
-        </div>
-        <div class="footerIcon">
-          <img class="resizeFooterIcons" src="img/Footer/news.png" alt="">
-        </div>
-        <div class="footerIcon">
-          <img class="resizeFooterIcons" src="img/Footer/discord.png" alt="">
-        </div>
-        <div class="footerMessage">
-          <h3 class="footerContacterMail letterSpacing">Mail</h3>
-          <p class="footerEmail footerP">fan.hub@gmail.com</p>
-        </div>
-        <div class="footerMessage">
-          <h3 class="footerContacterPhone letterSpacing">Contacter</h3>
-          <p class="footerPhoneNum footerP">+33 6 19 28 37 46</p>
-        </div>
-        <div class="footerMessage">
-          <h3 class="footerAdress letterSpacing">Nous trouver</h3>
-          <p class="footerLocation footerP">Montreuil</p>
-        </div>
-        <div class="footerMessage">
-          <h3 class="footerNewsH3 letterSpacing">Newsletter</h3>
-          <p class="footerFindMore footerP">Découvrez nos nouveautés</p>
-        </div>
-        <div class="footerMessage">
-          <h3 class="letterSpacing">Discord</h3>
-          <p class="footerP">Rejoignez-Nous !</p>
-        </div>
+    <div class="containerFooter">
+      <div class="container">
+        <footer class="footer">
+          <div class="footerGrid">
+            <div class="footerLogo">
+              <img class="footerLogoSize" src="logo.png" alt="">
+            </div>
+            <div class="footerIcons">
+              <i class="fa social fa-facebook" aria-hidden="true"></i>
+              <i class="fa social fa-twitter" aria-hidden="true"></i>
+              <i class="fa social fa-instagram" aria-hidden="true"></i>
+            </div>
+            <div class="footerIcon">
+              <img class="resizeFooterIcons" src="img/Footer/mail.png" alt="">
+            </div>
+            <div class="footerIcon">
+              <img class="resizeFooterIcons" src="img/Footer/phone.png" alt="">
+            </div>
+            <div class="footerIcon">
+              <img class="resizeFooterIcons" src="img/Footer/maps.png" alt="">
+            </div>
+            <div class="footerIcon">
+              <img class="resizeFooterIcons" src="img/Footer/news.png" alt="">
+            </div>
+            <div class="footerIcon">
+              <img class="resizeFooterIcons" src="img/Footer/discord.png" alt="">
+            </div>
+            <div class="footerMessage">
+              <h3 class="footerContacterMail letterSpacing">Mail</h3>
+              <p class="footerEmail footerP">fan.hub@gmail.com</p>
+            </div>
+            <div class="footerMessage">
+              <h3 class="footerContacterPhone letterSpacing">Contacter</h3>
+              <p class="footerPhoneNum footerP">+33 6 19 28 37 46</p>
+            </div>
+            <div class="footerMessage">
+              <h3 class="footerAdress letterSpacing">Nous trouver</h3>
+              <p class="footerLocation footerP">Montreuil</p>
+            </div>
+            <div class="footerMessage">
+              <h3 class="footerNewsH3 letterSpacing">Newsletter</h3>
+              <p class="footerFindMore footerP">Découvrez nos nouveautés</p>
+            </div>
+            <div class="footerMessage">
+              <h3 class="letterSpacing">Discord</h3>
+              <p class="footerP">Rejoignez-Nous !</p>
+            </div>
+          </div>
+          <p class="copyright">Groupe 23 - ©Copyright 2017</p>
+        </footer>
       </div>
-      <p class="copyright">Groupe 23 <br> ©CopyRight 2017</p>
-    </footer>
+    </div>
 
     <!-- PLAYER -->
 

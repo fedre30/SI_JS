@@ -464,8 +464,11 @@ input[type="checkbox"], input[type="radio"] {
   height: 100%;
 }
 
-.footer {
+.containerFooter {
   background: #111111;
+}
+
+.footer {
   color: #f2f2f2;
   margin-top: 8rem;
 }
@@ -474,12 +477,14 @@ input[type="checkbox"], input[type="radio"] {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 0rem;
-  margin-left: 4rem;
 }
 
 .footerLogo {
-  margin: 0 auto;
-  margin-top: 5rem;
+  margin: 5rem 0 0 calc(50% - 20px);
+}
+
+.footerLogo img {
+  transform: translateX(-50%);
 }
 
 .social {
@@ -492,10 +497,11 @@ input[type="checkbox"], input[type="radio"] {
 
 .footerIcons {
   display: flex;
-  justify-content: space-evenly;
-  width: 300px;
+  justify-content: space-between;
+  width: 200px;
   height: 25%;
   grid-row: 2;
+  padding-right: 40px;
 }
 
 .iconResize {
@@ -1045,12 +1051,12 @@ video::-webkit-media-controls {
 
 /* UPLOAD */
 
-.uploadSection {
-  width: 50%;
+.uploadContainer {
+  width: 80%;
   margin: 0 auto;
 }
 
-.uploadSection h2{
+.uploadContainer h2{
   color: #f2f2f2;
   font-size: 2.8rem;
   margin-bottom: 4rem;
@@ -1059,62 +1065,54 @@ video::-webkit-media-controls {
 }
 
 .forms {
-  display: grid;
-  grid-template-columns: 1fr 0.5fr 1fr;
-  margin-top: 10rem;
 }
 
-.position1 {
-  grid-column: 1;
-  margin: 0 auto;
+.forms input,
+.forms select,
+.forms textarea
+{
+  width: 100%;
+  padding: 4px 8px;
 }
 
-.position2 {
-  grid-column: 2;
-  margin: 0 auto;
-
-}
-
-.position3 {
-  grid-column: 3;
-  margin: 0 auto;
-
-}
-
-.positionRow1 {
-  grid-row: 1;
-}
-
-.positionRow2 {
-  grid-row: 2;
-}
-
-.positionRow3 {
-  grid-row: 3;
-}
-
-.positionRow4 {
-  grid-row: 4;
-}
-
-.gridIngrid {
-  display: grid;
-}
-
-#test {
-  margin-top: 2.5rem;
-  padding: 1rem 5rem;
+.forms input:not([type=submit]), .forms select, .forms textarea
+{
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  color: #ddd;
+  font-size: 18px;
+  line-height: 18px;
+  outline: none;
+  transition: background-color 0.2s ease, border-bottom 0.2s ease;
 }
 
 
-#test2 {
-  margin-top: 2.5rem;
-  padding: 3rem 5rem;
+.forms input:focus:not([type=file]), .forms select:focus, .forms textarea:focus
+{
+  background-color: #282828;
+  border: none;
+  border-bottom: 2px solid #33C3F0;
 }
 
+.forms input:hover, .forms select:hover, .forms textarea:hover
+{
+  background-color: #282828;
+}
 
+.forms input:not([type=file]), .forms select, .forms textarea
+{
+  border-bottom: 2px solid #555;
+}
 
-.inputfile {
+.forms textarea
+{
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.forms #file
+{
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -1123,42 +1121,50 @@ video::-webkit-media-controls {
   z-index: -1;
 }
 
-
-
-.inputfile + label {
-  font-size: 1.25em;
+.forms .inputfile + label {
   font-weight: 700;
-  color: white;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(51, 195, 240, 0.6);
   display: inline-block;
+  width: 100%;
+  padding: 8px 0;
+  transition: all 0.2s ease;
+  text-align: center;
+  border-bottom: 2px solid #33C3F0;
+  margin-bottom: 4px;
 }
 
-.inputfile:focus + label,
-.inputfile + label:hover {
-  color: #212121;
+.forms .inputfile:focus + label,
+.forms .inputfile + label:hover {
+  background-color: rgba(51, 195, 240, 0.8);
+  border-bottom: 2px solid #35d0ff;
+  color: white;
+  transform: translateY(-3px);
 }
 
-.inputfile + label {
-  cursor: pointer;
+.forms input[type=submit]
+{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(45, 204, 98, 0.6);
+  display: inline-block;
+  width: 100%;
+  border-radius: 0;
+  padding: 8px 0;
+  transition: all 0.2s ease;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid #2DCC62 !important;
+  margin-top: 10px;
+  margin-bottom: 4px;
 }
 
-.inputfile:focus + label {
-  outline: 1px dotted #000;
-  outline: -webkit-focus-ring-color auto 5px;
+.forms input[type=submit]:hover {
+  background-color: rgba(45, 204, 98, 0.8);
+  border-bottom: 2px solid #2DCC62;
+  color: white;
+  transform: translateY(-3px);
 }
-
-.file-return:not(:empty) {
-  margin: 1em 0;
-}
-.js .file-return {
-  font-style: italic;
-  font-size: .9em;
-  font-weight: bold;
-}
-.js .file-return:not(:empty):before {
-  content: "Selected file: ";
-  font-style: normal;
-  font-weight: normal;
-}
-
-
-
